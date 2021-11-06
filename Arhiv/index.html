@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <section class="section-head">
+        <div class="container container-head">
+            <div class="row">
+                <div class="content-head">
+                    <img src="img/logo-duck.png" alt=""/>
+                </div>
+            </div>    
+        </div>
+    </section>
+    <section class="section-form">
+        <div class="container container-text">
+            <div class="content-heading-text">
+                <p>!</p>
+                <h1>Ay caramba!</h1>
+            </div>
+        </div>
+        <div class="container container-form">
+            <form class="row mt-3">
+                <div class="col-12 col-md-4 col-lg-3 mt-2 text-name">
+                    <label for="formGroupExampleInput" class="form-label"></label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Название">
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 text-year mt-2">
+                    <label for="formGroupExampleInput" class="form-label"></label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Год">
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 text-price">
+                
+                    <label for="formGroupExampleInput" class="form-label">Цена</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput">
+                </div>
+            </form>    
+            <form class="row mt-4">    
+                <div class="col-12 col-lg-9 text-description mt-4">
+                
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Описание">
+                </div>
+            </form>    
+            
+            <form class="row mt-4">
+                <div class="col-12 col-md-4 col-lg-3 col-color">
+                    <h2>Цвет</h2>
+                    <input type="radio" name="color" id="wite" />
+                    <input type="radio" name="color" id="black" checked="checked" />
+                    <input type="radio" name="color" id="gray" />
+                    <input type="radio" name="color" id="red" />
+                    <input type="radio" name="color" id="green" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 text-status">
+                    <input list="list-status" id="status" name="status" placeholder="Статус"/>
+                    <datalist id="list-status">
+                        <option value="В наличии">
+                        <option value="Ожидается">
+                        <option value="Нет в наличии">
+                    </datalist>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <button type="button" class="btn btn-danger">Отправить<img src="img/arrow-right.png" alt=""/></button>
+                </div>
+            </form>
+        </div>  
+
+
+
+        
+        <div class="container d-none d-sm-none d-md-block container-table">
+            <div class="row content-table-text mt-5">
+                <div class="col-12 col-lg-9">
+                   
+                        
+                        <table class="table align-middle caption-top">
+                            <caption>&#124; Автомобили в наличии</caption>
+                            <thead>
+                              <tr>
+                                <th scope="col">Название</th>
+                                <th scope="col">Год</th>
+                                <th scope="col">Цвет</th>
+                                <th scope="col">Статус</th>
+                                <th scope="col">Цена</th>
+                                <th scope="col delete">
+                                    <span class="th-delete">Удалить</span>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">
+                                    1.6 MT Ambiente 85 л.с. МКПП
+                                    <p>+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</p>
+                                </th>
+                                <td>2012</td>
+                                <td>
+                                    <div class="color-circle">
+                                        <span id="circle" class="black"></span>
+                                    </div>    
+                                </td>
+                                <td>Ожидается</td>
+                                <td>1&nbsp;189&nbsp;900&nbsp;руб.</td>
+                                <td>
+                                    <span class="td-delete">Удалить</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">
+                                    1.6 MT Ambiente Plus 105 л.с. МКПП
+                                </th>
+                                <td>2012</td>
+                                <td> 
+                                    <div class="color-circle">
+                                        <span id="circle" class="wite"></span>
+                                    </div>    
+                                </td>
+                                <td>Ожидается</td>
+                                <td>1&nbsp;189&nbsp;900&nbsp;руб.</td>
+                                <td>
+                                    <span class="td-delete">Удалить</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">
+                                    1.6 MT Trend 105 л.с. МКПП
+                                </th>
+                                <td>2012</td>
+                                <td>
+                                    <div class="color-circle">
+                                        <span id="circle" class="black"></span>
+                                    </div>    
+                                </td>
+                                <td>В наличии</td>
+                                <td>1&nbsp;459&nbsp;000&nbsp;руб.</td>
+                                <td>
+                                    <span class="td-delete">Удалить</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">
+                                    1.6 PowerShift Trend Sport 105 л.с. АКПП
+                                </th>
+                                <td>2012</td>
+                                <td>
+                                    <div class="color-circle">
+                                        <span id="circle" class="gray"></span>
+                                    </div>    
+                                </td>
+                                <td>Ожидается</td>
+                                <td>1&nbsp;459&nbsp;000&nbsp;руб.</td>
+                                <td>
+                                    <span class="td-delete">Удалить</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">
+                                    2.0 MT Trend Sport 150 л.с. МКПП
+                                </th>
+                                <td>2012</td>
+                                <td>
+                                    <div class="color-circle">
+                                        <span id="circle" class="red"></span>
+                                    </div>    
+                                </td>
+                                <td>Ожидается</td>
+                                <td>786&nbsp;000&nbsp;руб.</td>
+                                <td>
+                                    <span class="td-delete">Удалить</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">
+                                    2.0 PowerShift Trend Sport 150 л.с. АКПП
+                                    <p>+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</p>
+                                </th>
+                                <td>2012</td>
+                                <td>
+                                    <div class="color-circle">
+                                        <span id="circle" class="green"></span>
+                                    </div>    
+                                </td>
+                                <td>Нет в наличии</td>
+                                <td>821&nbsp;000&nbsp;руб.</td>
+                                <td>
+                                    <span class="td-delete">Удалить</span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        
+                </div>    
+            </div>        
+        </div>
+
+        <div class="container d-block d-sm-block d-md-none container-table-small">
+            <div class="row content-table-text mt-5">
+                <div class="col-12">
+                   
+                        
+                        <table class="table table-borderless align-middle caption-top">
+                            <caption>&#124; Автомобили в наличии</caption>
+
+
+                            <thead class="thead-table-small">
+                                <tr>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" colspan="2">
+                                         1.6 MT Ambiente 85 л.с. МКПП
+                                    </th>
+                                    <td>
+                                        <div class="color-circle">
+                                            <span id="circle" class="black"></span>
+                                        </div>    
+                                    </td>
+                                    <td>1&nbsp;689&nbsp;000&nbsp;руб.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="4">
+                                         <p>+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</p>
+                                    </th>
+                                    
+                                </tr>
+                                <tr class="borderBottom">
+                                    <td class="line_2">
+                                        2012
+                                    </td>
+                                    <td colspan="2">
+                                       Ожидается
+                                    </td>
+                                    <td>
+                                        <span class="td-delete">Удалить</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2">
+                                        1.6 MT Ambiente Plus 105 л.с. МКПП
+                                    </th>
+                                    <td> 
+                                        <div class="color-circle">
+                                            <span id="circle" class="wite"></span>
+                                        </div>    
+                                    </td>
+                                    <td>1&nbsp;189&nbsp;900&nbsp;руб.</td>
+                                </tr>
+                                
+                                <tr class="borderBottom">
+                                    <td class="line_2">
+                                        2012
+                                    </td>
+                                    <td colspan="2">
+                                       Ожидается
+                                    </td>
+                                    <td>
+                                        <span class="td-delete">Удалить</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row"  colspan="2">
+                                        1.6 MT Trend 105 л.с. МКПП
+                                    </th>
+                                    <td>
+                                        <div class="color-circle">
+                                            <span id="circle" class="black"></span>
+                                        </div>    
+                                    </td>
+                                    <td>1&nbsp;459&nbsp;000&nbsp;руб.</td>
+                                </tr>
+                                
+                                <tr class="borderBottom">
+                                    <td class="line_2">
+                                        2012
+                                    </td>
+                                    <td colspan="2">
+                                       В наличии
+                                    </td>
+                                    <td>
+                                        <span class="td-delete">Удалить</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"  colspan="2">
+                                        1.6 PowerShift Trend Sport 105 л.с. АКПП
+                                    </th>
+                                    <td>
+                                        <div class="color-circle">
+                                            <span id="circle" class="gray"></span>
+                                        </div>    
+                                    </td>
+                                    <td>1&nbsp;459&nbsp;000&nbsp;руб.</td>
+                                </tr>
+                                
+                                <tr class="borderBottom">
+                                    <td class="line_2">
+                                        2012
+                                    </td>
+                                    <td colspan="2">
+                                       Ожидается
+                                    </td>
+                                    <td>
+                                        <span class="td-delete">Удалить</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2">
+                                        2.0 MT Trend Sport 150 л.с. МКПП
+                                    </th>
+                                    <td>
+                                        <div class="color-circle">
+                                            <span id="circle" class="red"></span>
+                                        </div>    
+                                    </td>
+                                    <td>786&nbsp;000&nbsp;руб.</td>
+                                </tr>
+                                
+                                <tr class="borderBottom">
+                                    <td class="line_2">
+                                        2012
+                                    </td>
+                                    <td colspan="2">
+                                       Ожидается
+                                    </td>
+                                    <td>
+                                        <span class="td-delete">Удалить</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"  colspan="2">
+                                        2.0 PowerShift Trend Sport 150 л.с. АКПП
+                                    </th>
+                                    <td>
+                                        <div class="color-circle">
+                                            <span id="circle" class="green"></span>
+                                        </div>    
+                                    </td>
+                                    <td>821&nbsp;000&nbsp;руб.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="4">
+                                         <p>+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</p>
+                                    </th>
+                                    
+                                </tr>
+                                
+                                <tr class="borderBottom">
+                                    <td class="line_2">
+                                        2012
+                                    </td>
+                                    <td colspan="2">
+                                       В наличии
+                                    </td>
+                                    <td>
+                                        <span class="td-delete">Удалить</span>
+                                    </td>
+                                </tr>
+                           
+                            <tbody>
+                                      
+                          
+                          </table>
+                        
+                </div>    
+            </div>        
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="section-footer">
+        <div class="container container-footer">
+            <div class="row">
+                <div class="col content-footer">
+                    <h3>&#169; 2020 CAPTAIN QUACK</h3>
+                    <p>Десница тысячелетия и моллюск!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
