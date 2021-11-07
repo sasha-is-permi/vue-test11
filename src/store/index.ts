@@ -60,8 +60,8 @@ let pathFromApi = "https://rawgit.com/Varinetz/e6cbadec972e76a340c41a65fcc2a6b3/
     
      // записываем в state полученную информацию
      cars(state,data){                 
-      
-    
+      state.cars = data    
+      console.log("data",data)
     },
   },
   actions: {

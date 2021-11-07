@@ -1,5 +1,6 @@
 
 <template>
+     
      <section class="section-head">
         <div class="container container-head">
             <div class="row">
@@ -367,6 +368,7 @@
                 </div>    
             </div>        
         </div>
+  
     </section>
 
 
@@ -406,8 +408,9 @@ export default defineComponent({
             },
              computed: {           
         
-            cars() {
+            cars() { 
                     return this.$store.getters.cars
+                  
             }
     
                   },       
@@ -415,7 +418,7 @@ export default defineComponent({
 
         created() {
              this.setData();
-        },
+            },
   
 });
 </script>
