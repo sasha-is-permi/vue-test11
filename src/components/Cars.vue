@@ -75,15 +75,8 @@
                             <caption>&#124; Автомобили в наличии</caption>
                             <thead>
                               <tr>
-                                <th scope="col">Название</th>
-                                <th scope="col">Год</th>
-                                <th scope="col">Цвет</th>
-                                <th scope="col">Статус</th>
-                                <th scope="col">Цена</th>
-                                <th scope="col delete">
-                                    <span class="th-delete">Удалить</span>
-                                </th>
-                              </tr>
+                                <th v-for ="item in thArray" :key="item"  scope="col">{{item}}</th>
+                               </tr>
                             </thead>
                             <tbody>
                               <tr>
@@ -202,10 +195,7 @@
 
                             <thead class="thead-table-small">
                                 <tr>
-                                  <th scope="col"></th>
-                                  <th scope="col"></th>
-                                  <th scope="col"></th>
-                                  <th scope="col"></th>
+                                  <th v-for="n in 4" :key="n" scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -372,10 +362,6 @@
     </section>
 
 
-
-
-
-
     <section class="section-footer">
         <div class="container container-footer">
             <div class="row">
@@ -392,11 +378,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
+
+
 export default defineComponent({
   name: 'Cars',
    data(){
       return{
-
+            thArray:  ['Название','Год','Цвет','Статус','Цена',""] as Array<string>
       }
   },
     methods:{
@@ -606,9 +594,7 @@ th p {
 .td-delete {
     padding: 5px 10px;
 }
-.th-delete {
-    display: none;
-}
+
 
 
 .container-table-small {
