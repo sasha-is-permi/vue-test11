@@ -5,7 +5,7 @@
         <div class="container container-head">
             <div class="row">
                 <div class="content-head">
-                    <img src="img/logo-duck.png" alt=""/>
+                    <img src="../assets/logo-duck.png" alt=""/>
                 </div>
             </div>    
         </div>
@@ -21,22 +21,22 @@
             <form class="row mt-3">
                 <div class="col-12 col-md-4 col-lg-3 mt-2 text-name">
                     <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Название">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Название" v-model="name">
                 </div>
-                <div class="col-6 col-md-4 col-lg-3 text-year mt-2">
-                    <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Год">
+                <div class="col-6 col-md-4 col-lg-3 text-year">
+                    <label for="formGroupExampleInput" class="form-label">Год</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput"  v-model="year">
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 text-price">
                 
                     <label for="formGroupExampleInput" class="form-label">Цена</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput">
+                    <input type="text" class="form-control" id="formGroupExampleInput" v-model="price">
                 </div>
             </form>    
             <form class="row mt-4">    
                 <div class="col-12 col-lg-9 text-description mt-4">
                 
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Описание">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Описание" v-model="description">
                 </div>
             </form>    
             
@@ -66,7 +66,7 @@
                 </div>
                 {{status}}
                 <div class="col-6 col-md-4 col-lg-3">
-                    <button type="button" class="btn btn-danger">Отправить<img src="img/arrow-right.png" alt=""/></button>
+                    <button type="button" class="btn btn-danger">Отправить<img src="../assets/arrow-right.png" alt=""/></button>
                 </div>
             </form>
         </div>  
@@ -198,7 +198,13 @@ export default defineComponent({
       return{
             thArray:  ['Название','Год','Цвет','Статус','Цена',""] as Array<string>,
             color:'' as string,
-            status:'' as string
+            status:'' as string,
+            name:'' as string,
+            year:2000 as number,
+            price:0 as number,
+            description:'' as string
+
+
       }
   },
     methods:{
@@ -333,7 +339,7 @@ form {
     line-height: 24px;
     font-weight: normal;
 }
-.text-name input, .text-year input, .text-description input, .text-status input {
+.text-name input, input, .text-description input, .text-status input {
     color: #8B8B8B;
     font-size: 14px;
     line-height: 24px;
@@ -348,6 +354,22 @@ form {
    
 }
 .text-price input {
+    color: #282D30;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+
+}
+
+.text-year label {
+    color: #8B8B8B;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: normal;
+    padding-left: 10px;
+   
+}
+.text-year input {
     color: #282D30;
     font-size: 18px;
     line-height: 24px;
