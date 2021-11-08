@@ -43,20 +43,28 @@
             <form class="row mt-4">
                 <div class="col-12 col-md-4 col-lg-3 col-color">
                     <h2>Цвет</h2>
-                    <input type="radio" name="color" id="wite" />
-                    <input type="radio" name="color" id="black" checked="checked" />
-                    <input type="radio" name="color" id="gray" />
-                    <input type="radio" name="color" id="red" />
-                    <input type="radio" name="color" id="green" />
+                    <div class="d1" style="display:inline-block"> </div>
+                    <div class="d2" style="display:inline-block" > </div>
+                    <div class="d3" style="display:inline-block" > </div>
+                    <div class="d4" style="display:inline-block" > </div>
+                    <div class="d5" style="display:inline-block" > </div>  
+                    <div style="display:block"> </div>
+                    <input type="radio" name="color" id="white" value="white" v-model="color" />
+                    <input type="radio" name="color" id="black" checked="checked" value="black" v-model="color"  />
+                    <input type="radio" name="color" id="gray" value="gray" v-model="color" />
+                    <input type="radio" name="color" id="red" value="red" v-model="color" />
+                    <input type="radio" name="color" id="green" value="green" v-model="color" />
                 </div>
+                
                 <div class="col-6 col-md-4 col-lg-3 text-status">
-                    <input list="list-status" id="status" name="status" placeholder="Статус"/>
-                    <datalist id="list-status">
-                        <option value="В наличии"/>
-                        <option value="Ожидается"/>
-                        <option value="Нет в наличии"/>
-                    </datalist>
+                   <select v-model="status" id="list-status">
+                   <option disabled value="">Выберите один из вариантов</option>
+                   <option value="pednding">Ожидается</option>
+                    <option value="in_stock">в наличии</option>
+                   <option value="out_of_stock">нет в наличии</option>
+                   </select>                  
                 </div>
+                {{status}}
                 <div class="col-6 col-md-4 col-lg-3">
                     <button type="button" class="btn btn-danger">Отправить<img src="img/arrow-right.png" alt=""/></button>
                 </div>
@@ -79,104 +87,26 @@
                                </tr>
                             </thead>
                             <tbody>
-                              <tr>
+                              <tr v-for="car in cars" :key="car.id" >
                                 <th scope="row">
-                                    1.6 MT Ambiente 85 л.с. МКПП
-                                    <p>+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</p>
+                                   {{car.title}}
+                                    <p>{{car.description}}</p>
                                 </th>
-                                <td>2012</td>
+                                <td>{{car.year}}</td>
                                 <td>
                                     <div class="color-circle">
-                                        <span id="circle" class="black"></span>
+                                        <span id="circle" :class="car.color"></span>
                                     </div>    
                                 </td>
-                                <td>Ожидается</td>
-                                <td>1&nbsp;189&nbsp;900&nbsp;руб.</td>
+                                <td v-if="car.status==='pednding'">Ожидается</td>
+                                <td v-if="car.status==='in_stock'">в наличии</td>
+                                <td v-if="car.status==='out_of_stock'">нет в наличии</td>
+                                <td>{{car.price}} руб.</td>
                                 <td>
-                                    <span class="td-delete">Удалить</span>
+                                    <span class="td-delete" @click="deleteCar(car.id)">Удалить</span>
                                 </td>
                               </tr>
-                              <tr>
-                                <th scope="row">
-                                    1.6 MT Ambiente Plus 105 л.с. МКПП
-                                </th>
-                                <td>2012</td>
-                                <td> 
-                                    <div class="color-circle">
-                                        <span id="circle" class="wite"></span>
-                                    </div>    
-                                </td>
-                                <td>Ожидается</td>
-                                <td>1&nbsp;189&nbsp;900&nbsp;руб.</td>
-                                <td>
-                                    <span class="td-delete">Удалить</span>
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">
-                                    1.6 MT Trend 105 л.с. МКПП
-                                </th>
-                                <td>2012</td>
-                                <td>
-                                    <div class="color-circle">
-                                        <span id="circle" class="black"></span>
-                                    </div>    
-                                </td>
-                                <td>В наличии</td>
-                                <td>1&nbsp;459&nbsp;000&nbsp;руб.</td>
-                                <td>
-                                    <span class="td-delete">Удалить</span>
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">
-                                    1.6 PowerShift Trend Sport 105 л.с. АКПП
-                                </th>
-                                <td>2012</td>
-                                <td>
-                                    <div class="color-circle">
-                                        <span id="circle" class="gray"></span>
-                                    </div>    
-                                </td>
-                                <td>Ожидается</td>
-                                <td>1&nbsp;459&nbsp;000&nbsp;руб.</td>
-                                <td>
-                                    <span class="td-delete">Удалить</span>
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">
-                                    2.0 MT Trend Sport 150 л.с. МКПП
-                                </th>
-                                <td>2012</td>
-                                <td>
-                                    <div class="color-circle">
-                                        <span id="circle" class="red"></span>
-                                    </div>    
-                                </td>
-                                <td>Ожидается</td>
-                                <td>786&nbsp;000&nbsp;руб.</td>
-                                <td>
-                                    <span class="td-delete">Удалить</span>
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">
-                                    2.0 PowerShift Trend Sport 150 л.с. АКПП
-                                    <p>+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</p>
-                                </th>
-                                <td>2012</td>
-                                <td>
-                                    <div class="color-circle">
-                                        <span id="circle" class="green"></span>
-                                    </div>    
-                                </td>
-                                <td>Нет в наличии</td>
-                                <td>821&nbsp;000&nbsp;руб.</td>
-                                <td>
-                                    <span class="td-delete">Удалить</span>
-                                </td>
-                              </tr>
+                             
                             </tbody>
                           </table>
                         
@@ -198,157 +128,39 @@
                                   <th v-for="n in 4" :key="n" scope="col"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody v-for="car in cars" :key="car.id">
+                               
+                               
                                 <tr>
                                     <th scope="row" colspan="2">
-                                         1.6 MT Ambiente 85 л.с. МКПП
+                                          {{car.title}}
                                     </th>
                                     <td>
                                         <div class="color-circle">
                                             <span id="circle" class="black"></span>
                                         </div>    
                                     </td>
-                                    <td>1&nbsp;689&nbsp;000&nbsp;руб.</td>
+                                    <td>{{car.price}} руб.</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" colspan="4">
-                                         <p>+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</p>
+                                    <th v-if="car.description.trim()!==''"  scope="row" colspan="4">
+                                         <p>{{car.description}}</p>
                                     </th>
                                     
                                 </tr>
                                 <tr class="borderBottom">
                                     <td class="line_2">
-                                        2012
+                                       {{car.year}}
                                     </td>
-                                    <td colspan="2">
-                                       Ожидается
-                                    </td>
+                                <td v-if="car.status==='pednding'" colspan="2">Ожидается</td>
+                                <td v-if="car.status==='in_stock'" colspan="2">в наличии</td>
+                                <td v-if="car.status==='out_of_stock'" colspan="2">нет в наличии</td>
                                     <td>
-                                        <span class="td-delete">Удалить</span>
+                                        <span class="td-delete" @click="deleteCar(car.id)" >Удалить</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row" colspan="2">
-                                        1.6 MT Ambiente Plus 105 л.с. МКПП
-                                    </th>
-                                    <td> 
-                                        <div class="color-circle">
-                                            <span id="circle" class="wite"></span>
-                                        </div>    
-                                    </td>
-                                    <td>1&nbsp;189&nbsp;900&nbsp;руб.</td>
-                                </tr>
-                                
-                                <tr class="borderBottom">
-                                    <td class="line_2">
-                                        2012
-                                    </td>
-                                    <td colspan="2">
-                                       Ожидается
-                                    </td>
-                                    <td>
-                                        <span class="td-delete">Удалить</span>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row"  colspan="2">
-                                        1.6 MT Trend 105 л.с. МКПП
-                                    </th>
-                                    <td>
-                                        <div class="color-circle">
-                                            <span id="circle" class="black"></span>
-                                        </div>    
-                                    </td>
-                                    <td>1&nbsp;459&nbsp;000&nbsp;руб.</td>
-                                </tr>
-                                
-                                <tr class="borderBottom">
-                                    <td class="line_2">
-                                        2012
-                                    </td>
-                                    <td colspan="2">
-                                       В наличии
-                                    </td>
-                                    <td>
-                                        <span class="td-delete">Удалить</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"  colspan="2">
-                                        1.6 PowerShift Trend Sport 105 л.с. АКПП
-                                    </th>
-                                    <td>
-                                        <div class="color-circle">
-                                            <span id="circle" class="gray"></span>
-                                        </div>    
-                                    </td>
-                                    <td>1&nbsp;459&nbsp;000&nbsp;руб.</td>
-                                </tr>
-                                
-                                <tr class="borderBottom">
-                                    <td class="line_2">
-                                        2012
-                                    </td>
-                                    <td colspan="2">
-                                       Ожидается
-                                    </td>
-                                    <td>
-                                        <span class="td-delete">Удалить</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="2">
-                                        2.0 MT Trend Sport 150 л.с. МКПП
-                                    </th>
-                                    <td>
-                                        <div class="color-circle">
-                                            <span id="circle" class="red"></span>
-                                        </div>    
-                                    </td>
-                                    <td>786&nbsp;000&nbsp;руб.</td>
-                                </tr>
-                                
-                                <tr class="borderBottom">
-                                    <td class="line_2">
-                                        2012
-                                    </td>
-                                    <td colspan="2">
-                                       Ожидается
-                                    </td>
-                                    <td>
-                                        <span class="td-delete">Удалить</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"  colspan="2">
-                                        2.0 PowerShift Trend Sport 150 л.с. АКПП
-                                    </th>
-                                    <td>
-                                        <div class="color-circle">
-                                            <span id="circle" class="green"></span>
-                                        </div>    
-                                    </td>
-                                    <td>821&nbsp;000&nbsp;руб.</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="4">
-                                         <p>+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</p>
-                                    </th>
-                                    
-                                </tr>
-                                
-                                <tr class="borderBottom">
-                                    <td class="line_2">
-                                        2012
-                                    </td>
-                                    <td colspan="2">
-                                       В наличии
-                                    </td>
-                                    <td>
-                                        <span class="td-delete">Удалить</span>
-                                    </td>
-                                </tr>
+                               
+                
                            
                             </tbody>
                                       
@@ -378,16 +190,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-
+type carsObject={id:number,title:string,description:string,year:number,color:string,price:number,status:string}
 
 export default defineComponent({
   name: 'Cars',
    data(){
       return{
-            thArray:  ['Название','Год','Цвет','Статус','Цена',""] as Array<string>
+            thArray:  ['Название','Год','Цвет','Статус','Цена',""] as Array<string>,
+            color:'' as string,
+            status:'' as string
       }
   },
     methods:{
+       
+      deleteCar(id:number){
+           this.$store.dispatch('deleteCar',id)
+      }, 
+        
       setData() {
                         
                 this.$store.dispatch('getCars')              
@@ -396,9 +215,10 @@ export default defineComponent({
             },
              computed: {           
         
-            cars() { 
-                    return this.$store.getters.cars
-                  
+            cars():Array<carsObject>  { 
+                    let cars = [] as Array<carsObject> 
+                    cars = this.$store.getters.cars 
+                    return cars                
             }
     
                   },       
@@ -412,6 +232,56 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+.d1 {
+width: 12px; 
+height: 12px;
+background:white;
+border: 1px solid black; 
+border-radius: 50%;
+margin-right:1px;
+
+}
+
+.d2 {
+width: 12px; 
+height: 12px;
+background:black;
+border: 1px solid black; 
+border-radius: 50%;
+margin-right:1px;
+
+}
+
+.d3 {
+width: 12px; 
+height: 12px;
+background:grey;
+border: 1px solid red; 
+border-radius: 50%;
+margin-right:1px;
+
+}
+.d4 {
+width: 12px; 
+height: 12px;
+background:red;
+border-radius: 50%;
+border: 1px solid red; 
+margin-right:1px;
+
+}
+
+.d5 {
+width: 12px; 
+height: 12px;
+background:green;
+border-radius: 50%;
+border: 1px solid green; 
+margin-right:1px;
+}
+
+
 
 body {
     font-family: Roboto;
