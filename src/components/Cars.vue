@@ -209,7 +209,7 @@ export default defineComponent({
 
       }
   },
-    methods:{
+    methods:{ 
        
       deleteCar(id:number){
            this.$store.dispatch('deleteCar',id)
