@@ -70,7 +70,11 @@ type carsObject={id:number,title:string,description:string,year:number,color:str
            //     console.log("delete element index",index);
                 // в массиве из state teams начиная с позиции 1 удалить 1 элемент
                 state.cars.splice(index, 1);  
-    }
+    },
+   addCar(state,newCar){                 
+    state.cars.push({id:newCar.id,title:newCar.title,description:newCar.description,
+    year:newCar.year,color:newCar.color,price:newCar.price,status:newCar.status})
+},
   },
   actions: {
     // Получение всех элементов из базы данных
@@ -124,7 +128,40 @@ type carsObject={id:number,title:string,description:string,year:number,color:str
 
         commit('deleteCar',id)
 
+       },
+       
+       addCar({commit},newCar){
+        // тут запрос axios должен быть с методом post 
+        // не добавляю чтобы не нарушать реальный массив на сервере
+        // (если соответствующий метод post подготовлен на backend и настроен на передающийся newCar)
+        // Если нет- нужно изменить state и передать полностью новую версию state на сервер
+        // Удаление машины из state
+    
+       /*  
+   axios({
+           method: 'post',
+           url: `${pathFromApi}`,
+           headers: {   
+            'Content-Type': 'application/json'                
+            }, data : JSON.stringify({newCar.id,newCar.title,newCar.description,newCar.year,newCar.color,
+           newCar.price,newCar.status})
+
+
+           })
+                     
+           .then(function (response) {        
+           if (response.status === 200) {  
+           commit('addCar',response.data) }})
+           .catch(function (error) {
+            console.log("Ошибка!")
+       }); 
+            */
+
+
+        commit('addCar',newCar)
+
        }                 
+
 
 
   },

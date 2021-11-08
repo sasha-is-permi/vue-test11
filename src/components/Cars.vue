@@ -21,7 +21,7 @@
             <form class="row mt-3">
                 <div class="col-12 col-md-4 col-lg-3 mt-2 text-name">
                     <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Название" v-model="name">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Название" v-model="title">
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 text-year">
                     <label for="formGroupExampleInput" class="form-label">Год</label>
@@ -62,11 +62,13 @@
                    <option value="pednding">Ожидается</option>
                     <option value="in_stock">в наличии</option>
                    <option value="out_of_stock">нет в наличии</option>
-                   </select>                  
+                   </select>          
+             
                 </div>
-                {{status}}
+               
                 <div class="col-6 col-md-4 col-lg-3">
-                    <button type="button" class="btn btn-danger">Отправить<img src="../assets/arrow-right.png" alt=""/></button>
+                    <button type="button" class="btn btn-danger" @click.stop="addCar">Отправить<img src="../assets/arrow-right.png" alt=""/>
+                    </button>
                 </div>
             </form>
         </div>  
@@ -101,7 +103,7 @@
                                 <td v-if="car.status==='pednding'">Ожидается</td>
                                 <td v-if="car.status==='in_stock'">в наличии</td>
                                 <td v-if="car.status==='out_of_stock'">нет в наличии</td>
-                                <td>{{car.price}} руб.</td>
+                                <td>{{car.price}} руб.</td>                              
                                 <td>
                                     <span class="td-delete" @click="deleteCar(car.id)">Удалить</span>
                                 </td>
@@ -197,9 +199,9 @@ export default defineComponent({
    data(){
       return{
             thArray:  ['Название','Год','Цвет','Статус','Цена',""] as Array<string>,
-            color:'' as string,
-            status:'' as string,
-            name:'' as string,
+            color:'' as string,            
+            status:'pednding' as string,
+            title:'' as string,
             year:2000 as number,
             price:0 as number,
             description:'' as string
@@ -212,7 +214,38 @@ export default defineComponent({
       deleteCar(id:number){
            this.$store.dispatch('deleteCar',id)
       }, 
-        
+      addCar(){
+          if (isNaN(this.year)===true) {
+              alert("Год должен быть числом");
+          }
+          else if (isNaN(this.price)===true) {
+                alert("Цена должна быть числом")
+          } 
+          else if (this.title.trim()==="") {
+              alert("Название машины должно быть введено!")
+          }  
+          else { 
+           let newCar= {} as carsObject;
+           newCar.id = +this.cars.length +1;
+           newCar.title = this.title;
+           newCar.description= this.description;
+           newCar.year = +this.year;
+           newCar.color = this.color;
+           newCar.price= +this.price;
+           newCar.status= this.status;
+
+           this.$store.dispatch('addCar',newCar)   
+
+         
+           this.title="";
+           this.description="";
+           this.year=2000;
+           this.color="black";
+           this.price=0;
+           this.status="pednding";
+          }
+
+      },
       setData() {
                         
                 this.$store.dispatch('getCars')              
